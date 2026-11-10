@@ -1,5 +1,5 @@
 {
-    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only, and only once the actor is public). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Names are unique across the whole Apify account, so each carries the board name. Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema. options follow defaultRunOptions in store.json.",
+    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only, and only once the actor is public). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Names are unique across the whole Apify account, so each carries the board name. Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema. options follow defaultRunOptions in store.json. Tasks marked publish false stay saved but off the Store: the account publishes at most 100 pages across all actors, so each actor keeps 2 or more by its earnings and search traffic (2026-11-11).",
     "options": {
         "build": "latest",
         "memoryMbytes": 1024,
@@ -8,6 +8,7 @@
     "tasks": [
         {
             "name": "welcome-to-the-jungle-jobs-last-24-hours",
+            "publish": false,
             "title": "Get the newest Welcome to the Jungle jobs of the last 24 hours",
             "description": "Get the 100 newest jobs posted on Welcome to the Jungle in the last day, in France, Europe, the UK and the US, with the company, offices, contract, remote policy, pay when shown and link. Set Number of jobs to 0 to get every one, and schedule it daily for a fresh feed.",
             "input": {
@@ -38,6 +39,7 @@
         },
         {
             "name": "developer-jobs-paris-welcome-to-the-jungle",
+            "publish": false,
             "title": "Find developer jobs in Paris on Welcome to the Jungle",
             "description": "Search Welcome to the Jungle for developer and développeur jobs in Paris, newest first, with the company, contract, remote policy, experience asked and pay when shown. Every title holds the word.",
             "input": {
@@ -74,6 +76,7 @@
         },
         {
             "name": "internships-france-welcome-to-the-jungle",
+            "publish": false,
             "title": "Find internships in France on Welcome to the Jungle",
             "description": "Get the newest internships (stages) in France on Welcome to the Jungle, with the company, town, duration in months, monthly pay when shown and link. Add a field such as marketing or data to narrow them down.",
             "input": {
@@ -142,6 +145,7 @@
         },
         {
             "name": "remote-jobs-welcome-to-the-jungle",
+            "publish": false,
             "title": "Find fully remote jobs on Welcome to the Jungle",
             "description": "Get the newest fully remote jobs on Welcome to the Jungle, in Europe, the UK and the US, with the company, contract, pay when shown and link. The remote policy is the one each employer states.",
             "input": {
@@ -175,6 +179,7 @@
         },
         {
             "name": "product-manager-jobs-london-welcome-to-the-jungle",
+            "publish": false,
             "title": "Find product manager jobs in London, Otta jobs included",
             "description": "Search Welcome to the Jungle, the site that took over Otta in the UK, for product manager jobs in London, newest first, with the company, remote policy, pay when shown and link.",
             "input": {
@@ -210,6 +215,7 @@
         },
         {
             "name": "software-engineer-jobs-new-york-welcome-to-the-jungle",
+            "publish": false,
             "title": "Find software engineer jobs in New York with salary",
             "description": "Search Welcome to the Jungle for software engineer jobs in New York that pay 150,000 USD a year or more, newest first, with the pay range, company size and link.",
             "input": {
@@ -281,6 +287,7 @@
         },
         {
             "name": "data-analyst-jobs-details-welcome-to-the-jungle",
+            "publish": false,
             "title": "Find data analyst jobs with full details, Welcome to the Jungle",
             "description": "Search Welcome to the Jungle for data analyst jobs with full details: the description, experience wanted, recruitment process, skills, tools and the employer's apply link.",
             "input": {
@@ -314,6 +321,7 @@
         },
         {
             "name": "check-welcome-to-the-jungle-job-links",
+            "publish": false,
             "title": "Check whether Welcome to the Jungle job links are still open",
             "description": "Paste Welcome to the Jungle job links and each comes back open, with the job, closed (archived by the employer) or not found. Handy for cleaning old jobs out of a sheet or a job board.",
             "input": {
