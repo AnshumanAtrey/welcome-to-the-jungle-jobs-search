@@ -1,5 +1,6 @@
 {
-    "$comment": "Listing metadata, applied by scripts/store-metadata.mjs (manager/rules/SEO.md). No actorId yet: the first CI deploy creates the actor, private, and its ID goes here (Phase B).",
+    "$comment": "Listing metadata, applied by scripts/store-metadata.mjs (manager/rules/SEO.md). actorId pins the actor created by the first deploy (2026-11-10, build 1.0.1), so a rename keeps the same actor.",
+    "actorId": "AgojW3kNYmMCfuxlH",
     "seoTitle": "Welcome to the Jungle Jobs Scraper - France & Europe",
     "seoDescription": "Search every Welcome to the Jungle job in France, the UK, the US and Europe by title, city, contract and pay. Newest first, with salary and remote policy.",
     "exampleRunInput": {
