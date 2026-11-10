@@ -2,7 +2,7 @@
     "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only, and only once the actor is public). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Names are unique across the whole Apify account, so each carries the board name. Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema. options follow defaultRunOptions in store.json.",
     "options": {
         "build": "latest",
-        "memoryMbytes": 512,
+        "memoryMbytes": 1024,
         "timeoutSecs": 1800
     },
     "tasks": [

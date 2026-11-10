@@ -2,7 +2,7 @@
 
 Welcome to the Jungle jobs scraper and API: search every open job on welcometothejungle.com (WTTJ), in France, Europe, the UK and the US, with the UK site that was Otta, live by job title, place, contract, remote policy, pay and posting date, and get each job's title, company, offices, contract type, remote policy, salary, years of experience, education, company size, industry, summary, key missions, perks, posting date and link, newest first, internships and alternance (work-study) included. Turn on full details for the description, the experience wanted, the recruitment process, skills, tools and the employer's own apply link.
 
-Use it as a Welcome to the Jungle API with no login and no API key, a WTTJ job scraper, an Otta jobs alternative or a daily feed of new jobs in France and Europe from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, and export JSON, CSV or Excel. Every row's title holds the words you typed, French and English place names both work (Bretagne and Brittany), and a pasted Welcome to the Jungle search link keeps its filters. Available as an [Apify Actor](https://apify.com/anshumanatrey/welcome-to-the-jungle-jobs-search). $0.00002 per job, $0.00006 with full details, $0.002 per run start at the default memory.
+Use it as a Welcome to the Jungle API with no login and no API key, a WTTJ job scraper, an Otta jobs alternative or a daily feed of new jobs in France and Europe from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, and export JSON, CSV or Excel. Every row's title holds the words you typed, a place typed with the title is read as the place (développeur à Paris, data analyst in London), French and English place names both work (Bretagne and Brittany), and a pasted Welcome to the Jungle search link keeps its filters. Available as an [Apify Actor](https://apify.com/anshumanatrey/welcome-to-the-jungle-jobs-search). $0.000013 per job, $0.000014 with full details, $0.01 per run start at the default memory.
 
 ## What does it do?
 
@@ -33,22 +33,23 @@ Use it as a Welcome to the Jungle API with no login and no API key, a WTTJ job s
 
 ## How much does it cost to scrape Welcome to the Jungle jobs?
 
-Pay per event: $0.02 per 1,000 jobs, or $0.06 per 1,000 with full details, plus $0.002 per run at the default 512 MB. Apify's free $5 monthly credit covers about 125,000 jobs in runs of 100. Platform usage is included, and there is no monthly fee.
+Pay per event: $0.013 per 1,000 jobs, or $0.014 per 1,000 with full details, plus $0.01 per run at the default 1 GB. Apify's free $5 monthly credit covers about 44,000 jobs in runs of 100, or about 217,000 in runs of 1,000. Platform usage is included, and there is no monthly fee.
 
 | Event | Price | When it is charged |
 |---|---|---|
-| Job | $0.00002 | One saved job, and one checked link that is closed or not found |
-| Job with details | $0.00006 | One saved job with full details on |
-| Run start | $0.002 per GB of memory | Charged by Apify when a run starts: once up to 1 GB and once more for each extra GB, so $0.002 at the default 512 MB |
+| Job | $0.000013 | One saved job, and one checked link that is closed or not found |
+| Job with details | $0.000014 | One saved job with full details on |
+| Run start | $0.01 per GB of memory | Charged by Apify when a run starts: once up to 1 GB and once more for each extra GB, so $0.01 at the default 1 GB |
 
-Welcome to the Jungle Jobs Scraper's Apify Store header shows the lowest discount-tier price, the GOLD price: $0.018 per 1,000 jobs. FREE and BRONZE users (Apify's Free and Starter plans) pay $0.00002 a job; with full details FREE pays $0.00006 and BRONZE $0.000058. SILVER (Scale) pays $0.000019 and $0.000056, and GOLD (Business) and the enterprise tiers $0.000018 and $0.000054. The run start is a flat fee on every plan, $0.002 per GB of memory, and the header never shows it.
+Welcome to the Jungle Jobs Scraper's Apify Store header shows the lowest discount-tier price, the GOLD price: $0.01 per 1,000 jobs. FREE and BRONZE users (Apify's Free and Starter plans) pay $0.000013 a job and $0.000014 with full details. SILVER (Scale) pays $0.000011 and $0.000012, GOLD (Business) $0.00001 and $0.000011, and the enterprise tiers $0.00001 for both. Each price is what that row costs on Apify at that plan's own rates, measured on Apify runs, plus a markup of 100% on the Free plan that falls to 80% on the enterprise tiers. The run start is a flat fee on every plan, $0.01 per GB of memory, and the header never shows it.
 
 | Run (Free and Starter price, default memory) | Cost |
 |---|---|
-| 100 newest jobs | $0.004 |
-| 100 jobs with full details | $0.008 |
-| 1,000 jobs | $0.022 |
-| 20,000 jobs | $0.40 |
+| 100 newest jobs | $0.0113 |
+| 100 jobs with full details | $0.0114 |
+| 1,000 jobs | $0.023 |
+| 20,000 jobs | $0.27 |
+| Every job on the board (about 81,000) | $1.07 |
 
 ## How does the price compare with other Welcome to the Jungle scrapers?
 
@@ -64,9 +65,9 @@ Every actor on the Apify Store whose title names Welcome to the Jungle, WTTJ or 
 | maximedupre/welcometothejungle-jobs-extractor | 12 | $0.00085 | none | One query, places, countries, remote, contract, categories, search links |
 | scrapeworks/otta-jobs-scraper | 9 | free, you pay the platform usage | none | Company names or job links, residential proxy by default |
 | memo23/welcometothejungle-jobs-scraper | 8 | $0.00099, +$0.001 extra data | $0.005 | Several searches, market and country, filters, company pages |
-| This actor | new | $0.00002, $0.00006 with details | $0.002 per GB | Titles, places and the site's filters, live, newest first |
+| This actor | new | $0.000013, $0.000014 with details | $0.01 per GB | Titles, places and the site's filters, live, newest first |
 
-Where others are cheaper: this actor's run start, $0.002, is above clearpath's, bebity's and logiover's ($0.00005), so a run of a few jobs costs less there. Where others do more: bebity also returns the site's articles and company profiles; blackfalcondata adds change tracking and Slack, Telegram and webhook alerts; clearpath and bebity search around a point with a radius; memo23 adds contact emails.
+Where others are cheaper: this actor's run start, $0.01, is above every other's (clearpath, bebity and logiover $0.00005, shahidirfan $0.0005, blackfalcondata and memo23 $0.005), so a small run costs less elsewhere on the Free plan: fewer than 4 jobs on clearpath, 5 on logiover, 6 on memo23, 10 on shahidirfan, 12 on blackfalcondata or maximedupre, and 35 on bebity (21 with full details). From 35 jobs a run, this actor costs the least of them, and per job it costs the least by far. Where others do more: bebity also returns the site's articles and company profiles; blackfalcondata adds change tracking and Slack, Telegram and webhook alerts; clearpath and bebity search around a point with a radius; memo23 adds contact emails.
 
 ## Which inputs does it take?
 
@@ -74,7 +75,7 @@ Nothing is required. Type a job title and press Start, or press Start with the f
 
 | Field | What it does |
 |---|---|
-| Job titles to find (`searchTerms`) | One per line. A job matches when its title has every word: frontend also finds Front-End, accents do not matter. A pasted Welcome to the Jungle search link works too, with its country, contract and remote filters |
+| Job titles to find (`searchTerms`) | One per line. A job matches when its title has every word: frontend also finds Front-End, accents do not matter. A place typed with the title is read as the place: développeur à Paris, chef de projet sur Lyon, data analyst in London. A pasted Welcome to the Jungle search link works too, with its country, contract and remote filters |
 | Where the job is (`location`) | Towns, departments, regions or countries: Paris, Lyon, Ile-de-France, London, New York, Germany, Europe. French and English names both work. Remote alone asks for fully remote jobs |
 | Remote or office (`workType`) | remote (fully remote), hybrid (a few days or occasional days at home) or onsite (no remote) |
 | Contract type (`employmentType`) | full-time (permanent, CDI), part-time, contract (freelance), intern, temporary (fixed-term, CDD) or apprenticeship (work-study, alternance) |
@@ -169,7 +170,7 @@ Full details fill `skills`, `tools`, `startDate` and `companyWebsite`, and add `
 
 ## How fast is it?
 
-Seconds. In local runs on 2026-11-10: the form as it opens (100 newest jobs) took 2 s and 2 calls, data analyst 2 s, developer in Paris with a permanent contract 1 s, product manager in the UK with full details for 30 jobs 2 s (32 calls), 20,000 jobs 18 s (22 calls, about 1,100 jobs a second) and all 81,443 jobs of the board 87 s. The site's search answers 1,000 jobs a call, newest first, and reads only titles, so a rare title is as fast as a common one. A place the site does not list makes the run check every job by name (85 calls, 32 s for the whole board). Apify run times come with the first release.
+Seconds. On Apify at the default 1 GB on 2026-11-10: the form as it opens (100 newest jobs) took 2.8 s, developer in Paris with a permanent contract 2.5 s, product manager in the UK with full details for 47 jobs 3.8 s, software engineers in New York paying 150,000 USD or more 2.5 s, 5,000 jobs 6.8 s, and a run that reads all 80,000 jobs of the board 65 s. The example input took 3.7 s at 512 MB, 4.0 s at 1 GB and 4.0 s at 2 GB: a search waits on the site's answers (two calls for 100 jobs), not on memory. The site's search answers 1,000 jobs a call, newest first, and reads only titles, so a rare title is as fast as a common one. A place the site does not list makes the run check every job by name, which took 75 s at 1 GB and 138 s at 512 MB for the whole board; 512 MB also leaves a run of every job (maxJobs 0) close to its memory (435 MB used), so 1 GB is the default.
 
 ## Common questions
 
@@ -207,7 +208,7 @@ Welcome to the Jungle Jobs Scraper needs no Welcome to the Jungle login and no A
 
 ### Does it work on Apify's free plan?
 
-Welcome to the Jungle Jobs Scraper works on Apify's free plan, which pays $0.00002 a job plus the $0.002 run start at the default 512 MB. The free $5 monthly credit pays for about 125,000 jobs in runs of 100, at $0.004 a run.
+Welcome to the Jungle Jobs Scraper works on Apify's free plan, which pays $0.000013 a job plus the $0.01 run start at the default 1 GB. The free $5 monthly credit pays for about 44,000 jobs in runs of 100, at $0.0113 a run, or about 217,000 in runs of 1,000.
 
 ### How often should I run it?
 
@@ -306,4 +307,4 @@ For the people behind a company: [LinkedIn Profile Finder](https://apify.com/ans
 
 ## Last updated
 
-2026-11-10 (version 1.0)
+2026-11-10 (version 1.0, priced from Apify runs)

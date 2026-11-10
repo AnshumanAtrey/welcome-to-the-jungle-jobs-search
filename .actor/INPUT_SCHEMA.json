@@ -8,7 +8,7 @@
             "title": "Job titles to find (searchTerms)",
             "type": "array",
             "editor": "stringList",
-            "description": "Type the job titles or keywords to find, one per line, for example data analyst or développeur. A job matches when its title has every word of a line: frontend also finds Front-End, and accents do not matter. Leave it empty for the newest jobs of every kind. A pasted Welcome to the Jungle search link works too, with its country, contract and remote filters.",
+            "description": "Type the job titles or keywords to find, one per line, for example data analyst or développeur. A job matches when its title has every word of a line: frontend also finds Front-End, and accents do not matter. A place typed with the title is read as the place: développeur à Paris, data analyst in London. Leave it empty for the newest jobs of every kind. A pasted Welcome to the Jungle search link works too, with its country, contract and remote filters.",
             "placeholderValue": "data analyst",
             "example": [
                 "data analyst"
@@ -205,7 +205,7 @@
             "type": "integer",
             "editor": "number",
             "unit": "jobs",
-            "description": "Type how many jobs to get, newest first: 100 by default. Type 0 to get every matching job (85,000 at most, the whole board). Each job is one charged row, so this sets the most a run can cost.",
+            "description": "Type how many jobs to get, newest first: 100 by default. Type 0 to get every matching job (about 81,000 for the whole board, which needs 1 GB of memory or more). Each job is one charged row, so this sets the most a run can cost.",
             "prefill": 100,
             "example": 100,
             "default": 100,
