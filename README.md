@@ -276,7 +276,7 @@ Welcome to the Jungle Jobs Scraper reads public job postings, the data any visit
 - Places are matched by their words: Paris also finds Le Touquet-Paris-Plage. A few US towns that the site never gives a region (San Jose, Sunnyvale) are not found by their state; type the town.
 - A company's same title at the same office is delivered once, the newest, unless the job's own address names another town (Keolis lists one ambulance job per town at its head office).
 - The site's summary and key missions come in French on some English ads, as the site writes them.
-- Full details make one call per job.
+- Full details make one call per job. An employer's own apply link (`applyUrl`) can be closed while the site still lists the job (1 of 3 checked on 2026-11-10: a Lever page answered 404).
 - The run reads the site's search key from welcometothejungle.com each time; if the site stops handing it out, a run stops with a message that says so.
 
 ## Who maintains it?
