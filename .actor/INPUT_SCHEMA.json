@@ -1,0 +1,267 @@
+{
+    "title": "Welcome to the Jungle Jobs Search",
+    "description": "Type a job title and press Start: you get the newest matching jobs on Welcome to the Jungle (welcometothejungle.com, with the UK site that was Otta), about 85,000 open jobs in France, Europe, the UK and the US. Every other field is optional. Press Start with the form empty for the newest jobs of every kind.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "searchTerms": {
+            "title": "Job titles to find (searchTerms)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type the job titles or keywords to find, one per line, for example data analyst or développeur. A job matches when its title has every word of a line: frontend also finds Front-End, and accents do not matter. Leave it empty for the newest jobs of every kind. A pasted Welcome to the Jungle search link works too, with its country, contract and remote filters.",
+            "placeholderValue": "data analyst",
+            "example": [
+                "data analyst"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "location": {
+            "title": "Where the job is (location)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type where the jobs should be: towns, departments, regions or countries, one per line, for example Paris, Lyon, Ile-de-France, London, New York, Germany or Europe. French and English names both work (Bretagne and Brittany). Remote typed alone asks for fully remote jobs. Leave it empty for every country.",
+            "placeholderValue": "Paris",
+            "example": [
+                "Paris"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "workType": {
+            "title": "Remote or office (workType)",
+            "type": "array",
+            "editor": "select",
+            "description": "Pick remote (fully remote), hybrid (a few days or occasional days at home) or onsite (no remote), or several, as each employer states it on Welcome to the Jungle. Leave it empty for all of them, including the 47% of jobs that state no remote policy. Typed words such as full remote or office work too.",
+            "items": {
+                "type": "string",
+                "enumSuggestedValues": [
+                    "remote",
+                    "hybrid",
+                    "onsite"
+                ],
+                "enumTitles": [
+                    "Fully remote (remote)",
+                    "Hybrid",
+                    "No remote, in the office (onsite)"
+                ]
+            },
+            "example": [
+                "remote"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "employmentType": {
+            "title": "Contract type (employmentType)",
+            "type": "array",
+            "editor": "select",
+            "description": "Pick the contract types to keep: full-time (permanent, CDI), part-time, contract (freelance), intern (internship, stage), temporary (fixed-term, CDD) or apprenticeship (work-study, alternance), or several. Leave it empty for every contract. Each job's own contract, VIE and graduate programs included, is in the contractType column.",
+            "items": {
+                "type": "string",
+                "enumSuggestedValues": [
+                    "full-time",
+                    "part-time",
+                    "contract",
+                    "intern",
+                    "temporary",
+                    "apprenticeship"
+                ],
+                "enumTitles": [
+                    "Permanent, full-time (full-time)",
+                    "Part-time",
+                    "Freelance (contract)",
+                    "Internship (intern)",
+                    "Fixed-term (temporary)",
+                    "Work-study (apprenticeship)"
+                ]
+            },
+            "example": [
+                "intern"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "postedWithin": {
+            "title": "Posted in the last (postedWithin)",
+            "type": "string",
+            "editor": "select",
+            "description": "Pick how new the jobs must be: posted in the last 24 hours, 3, 7, 15 or 30 days. 30 days, the default, keeps the last month's jobs, newest first, and any time keeps every open job. The date is the moment the job went live on Welcome to the Jungle. You can also type your own period, such as 48 hours or 2 weeks.",
+            "enumSuggestedValues": [
+                "24 hours",
+                "3 days",
+                "7 days",
+                "15 days",
+                "30 days",
+                "any time"
+            ],
+            "enumTitles": [
+                "24 hours",
+                "3 days",
+                "7 days",
+                "15 days",
+                "30 days",
+                "any time"
+            ],
+            "example": "24 hours",
+            "default": "30 days",
+            "nullable": true
+        },
+        "minSalary": {
+            "title": "Minimum pay a year (minSalary)",
+            "type": "integer",
+            "editor": "number",
+            "unit": "a year, in the job's currency",
+            "minimum": 0,
+            "description": "Type the lowest yearly pay to keep, as a number in the job's own currency (EUR, USD or GBP): 50000 keeps the jobs whose pay can reach 50,000 a year. Monthly pay counts 12 months and a day rate 218 working days. Jobs that show no pay (two thirds of them) are left out. Leave it empty for every job.",
+            "example": 50000,
+            "sectionCaption": "Pay, experience, company",
+            "nullable": true,
+            "default": null
+        },
+        "experienceYears": {
+            "title": "Experience (experienceYears)",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Type your years of experience: a number such as 3, a range such as 2-5, 5+ for five or more, or fresher for none. A job is kept when the experience it asks for overlaps yours: Welcome to the Jungle states it as a band (3 to 4 years, 5 to 7 years), so 3 keeps 2-3 and 3-4 years. Jobs that state no experience (37%) are left out. Leave it empty for every experience.",
+            "example": "3",
+            "nullable": true,
+            "default": null
+        },
+        "companySize": {
+            "title": "Company size (companySize)",
+            "type": "array",
+            "editor": "select",
+            "description": "Pick the company sizes to keep, by headcount, as Welcome to the Jungle groups companies: under-15, 15-50, 50-250, 250-2000 or over-2000 employees. Leave it empty for every size. Typed forms such as <15 or 2000+ work too.",
+            "items": {
+                "type": "string",
+                "enumSuggestedValues": [
+                    "under-15",
+                    "15-50",
+                    "50-250",
+                    "250-2000",
+                    "over-2000"
+                ],
+                "enumTitles": [
+                    "Fewer than 15 people (under-15)",
+                    "15 to 50 people (15-50)",
+                    "50 to 250 people (50-250)",
+                    "250 to 2,000 people (250-2000)",
+                    "Over 2,000 people (over-2000)"
+                ]
+            },
+            "example": [
+                "15-50"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "industries": {
+            "title": "Business sectors (industries)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type the business sectors to keep, one per line, as Welcome to the Jungle names its industries: Software, FinTech, Banking, Health, E-commerce, Cyber Security, Artificial Intelligence, Luxury, Energy. A word finds every industry or industry group whose name holds it: Tech finds every tech industry. Leave it empty for every sector.",
+            "placeholderValue": "Software",
+            "example": [
+                "FinTech"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "jobLanguage": {
+            "title": "Language of the ad (jobLanguage)",
+            "type": "array",
+            "editor": "select",
+            "description": "Pick the languages the job ads must be written in: en (English), fr (French), de (German), es (Spanish), it (Italian), nl (Dutch) or pt (Portuguese). 62% of ads are in French and 37% in English; English ones are the jobs open to English speakers. Leave it empty for every language.",
+            "items": {
+                "type": "string",
+                "enumSuggestedValues": [
+                    "en",
+                    "fr",
+                    "de",
+                    "es",
+                    "it",
+                    "nl",
+                    "pt"
+                ],
+                "enumTitles": [
+                    "English (en)",
+                    "French (fr)",
+                    "German (de)",
+                    "Spanish (es)",
+                    "Italian (it)",
+                    "Dutch (nl)",
+                    "Portuguese (pt)"
+                ]
+            },
+            "example": [
+                "en"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "maxJobs": {
+            "title": "Number of jobs (maxJobs)",
+            "type": "integer",
+            "editor": "number",
+            "unit": "jobs",
+            "description": "Type how many jobs to get, newest first: 100 by default. Type 0 to get every matching job (85,000 at most, the whole board). Each job is one charged row, so this sets the most a run can cost.",
+            "prefill": 100,
+            "example": 100,
+            "default": 100,
+            "sectionCaption": "How many and how much",
+            "nullable": true
+        },
+        "includeDetails": {
+            "title": "Full details (includeDetails)",
+            "type": "boolean",
+            "editor": "checkbox",
+            "description": "Tick to add the full details of each job from Welcome to the Jungle's job API: the description, the experience wanted and the recruitment process as text and HTML, skills, tools, the start date, the company's website and, for a job posted through an outside careers site, its apply link. The run reads each saved job once more, and a job with details costs more.",
+            "default": false,
+            "nullable": true
+        },
+        "excludeTerms": {
+            "title": "Leave out words (excludeTerms)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type words that leave a job out when its title has them, one per line, for example senior or stage. Leave it empty to keep every job.",
+            "placeholderValue": "senior",
+            "example": [
+                "senior"
+            ],
+            "default": [],
+            "sectionCaption": "Narrow the search",
+            "nullable": true
+        },
+        "searchDescriptions": {
+            "title": "Wider match (searchDescriptions)",
+            "type": "boolean",
+            "editor": "checkbox",
+            "description": "Tick for a wider match: every job whose title, summary or profile wanted holds your words, not only its title. kubernetes then also finds a DevOps Engineer job that asks for Kubernetes.",
+            "default": false,
+            "nullable": true
+        },
+        "companies": {
+            "title": "Only these companies (companies)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type company names to search only their jobs, one per line, as Welcome to the Jungle names them: Doctolib, Back Market, Thales, Monzo. A company page link (welcometothejungle.com/en/companies/doctolib) or a companySlug from a row works too. Leave it empty to search every company.",
+            "placeholderValue": "Back Market",
+            "example": [
+                "Back Market"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "jobUrls": {
+            "title": "Job links to check (jobUrls)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Paste Welcome to the Jungle job links to check whether they are still open, one per line, instead of searching. Each comes back open with the job, closed (the employer archived it) or not found.",
+            "placeholderValue": "https://www.welcometothejungle.com/en/companies/docaposte-1/jobs/ingenieur-devops-sre-f-h_sophia-antipolis",
+            "default": [],
+            "sectionCaption": "Check job links",
+            "nullable": true
+        }
+    }
+}

@@ -1,0 +1,165 @@
+# Welcome to the Jungle Jobs Scraper & API - Otta, WTTJ, Salary
+
+> Welcome to the Jungle jobs scraper and API (WTTJ and Otta): 84,000+ open jobs in France, Europe, the UK and the US, searched live by title, place, contract, remote and pay, newest first.
+
+## Summary
+
+Welcome to the Jungle Jobs Search is an Apify actor that searches welcometothejungle.com live, through the search index and job API the site's own pages use, and returns one row per job, newest first: title, company, offices, contract type, remote policy, pay with its currency and period, years of experience as numbers, education, company headcount and founding year, industry, the site's summary and key missions, perks, the posting date and the link. Welcome to the Jungle held 84,849 open jobs at 4,515 companies on 2026-11-10, with offices in France (54,471), the US (18,024), the UK (5,573) and 246 more countries; otta.com now leads to its UK site ("Welcome To The Jungle UK (formerly Otta)"), so Otta's UK and US startup jobs are included. Unlike the other Welcome to the Jungle actors, it always returns the newest jobs first, every row's title holds the words you typed, several titles and places go in one run, UK and US offices that name only their town get its region (California finds San Francisco), and work-study (alternance) is a contract type of its own. No login and no API key.
+
+Store: https://apify.com/anshumanatrey/welcome-to-the-jungle-jobs-search
+Source: https://github.com/AnshumanAtrey/welcome-to-the-jungle-jobs-search
+
+## Key features
+
+- All of Welcome to the Jungle, every country site in one search, read live at run time, newest first by the moment each job went live (the job page's own posting date).
+- Titles that match: a job is kept when its title has every word of a line; Wider match also reads the summary and profile wanted.
+- Contract type on every job (permanent, fixed-term, internship, work-study, freelance, part-time, VIE), remote policy on 53%, pay on 34% (EUR, USD, GBP; a year, a month or a day), years of experience on 63%.
+- Company headcount (99%), founding year, industry (97%), logo, perks, the site's summary and three key missions on every row; full details add the description, experience wanted, recruitment process, skills, tools, start date and the employer's own apply link.
+- Filters: remote or office, contract type, years of experience, minimum yearly pay (monthly and daily pay compared on a year), company size, industry, the language of the ad, company names.
+- Places as the site writes them, in French or English: towns, departments, regions, countries, groups such as Europe or DACH; checks pasted job links (open, closed or not found).
+
+## Input keys
+
+- Job titles to find (searchTerms): one per line; a job matches when its title has every word; a Welcome to the Jungle search link works too.
+- Where the job is (location): towns, departments, regions or countries, such as Paris, Ile-de-France, London, New York, Germany, Europe; Remote alone asks for fully remote jobs.
+- Remote or office (workType): remote (fully remote), hybrid (a few days or occasional days at home) or onsite (no remote).
+- Contract type (employmentType): full-time (permanent, CDI), part-time, contract (freelance), intern, temporary (fixed-term, CDD) or apprenticeship (work-study, alternance).
+- Posted in the last (postedWithin): 24 hours, 3, 7, 15 or 30 days (the default), any time, or your own period.
+- Minimum pay a year (minSalary): a yearly amount in the job's own currency; monthly pay counts 12 months, a day rate 218 days.
+- Experience (experienceYears): your years, such as 3, a range such as 2-5, 5+ or fresher; keeps the jobs whose band overlaps it.
+- Company size (companySize): under-15, 15-50, 50-250, 250-2000, over-2000 employees.
+- Business sectors (industries): industries as the site names them, such as Software, FinTech, Banking, Health.
+- Language of the ad (jobLanguage): en, fr, de, es, it, nl or pt.
+- Number of jobs (maxJobs): 100 by default, 0 for every match.
+- Full details (includeDetails): adds the description, experience wanted, recruitment process, skills, tools, start date, the company's website and apply link.
+- Leave out words (excludeTerms): drops jobs whose title has these words.
+- Wider match (searchDescriptions): every job whose title, summary or profile wanted holds the words.
+- Only these companies (companies): company names as the site writes them, or a company page link.
+- Job links to check (jobUrls): Welcome to the Jungle job links.
+
+## Pricing
+
+PAY_PER_EVENT model, platform usage included:
+
+- Job: $0.00002 per saved job ($0.02 per 1,000), and per checked link that is closed or not found
+- Job with details: $0.00006 per saved job with full details on ($0.06 per 1,000)
+- Run start: $0.002 per GB of memory, charged by Apify when a run starts, so $0.002 at the default 512 MB
+
+Welcome to the Jungle Jobs Scraper's Apify Store header shows the lowest discount-tier price, the GOLD price: $0.018 per 1,000 jobs. FREE and BRONZE users (Apify's Free and Starter plans) pay $0.00002 a job; with full details FREE pays $0.00006 and BRONZE $0.000058. SILVER (Scale) pays $0.000019 and $0.000056, and GOLD (Business) and the enterprise tiers $0.000018 and $0.000054. The run start is a flat fee on every plan, $0.002 per GB of memory, and the header never shows it.
+
+Typical costs (Free and Starter price, default memory):
+
+- 100 newest jobs: $0.004
+- 100 jobs with full details: $0.008
+- 1,000 jobs: $0.022
+- 20,000 jobs: $0.40
+
+Apify's free $5 monthly credit covers about 125,000 jobs in runs of 100.
+
+## Speed
+
+Seconds: in local runs on 2026-11-10 the form as it opens took 2 s (2 calls), data analyst 2 s, 30 jobs with full details 2 s, 20,000 jobs 18 s (about 1,100 jobs a second) and all 81,443 jobs of the board 87 s.
+
+## How to call it
+
+- Apify API: POST https://api.apify.com/v2/acts/anshumanatrey~welcome-to-the-jungle-jobs-search/run-sync-get-dataset-items with the input as JSON and the header Authorization: Bearer <APIFY_TOKEN>. It returns the rows and waits up to 300 seconds, so start runs of thousands of jobs with a client.
+- Python and JavaScript: the apify-client package, actor anshumanatrey/welcome-to-the-jungle-jobs-search.
+- n8n: the Apify node, Run an Actor and get dataset. Make: the Apify app's Run an Actor and Get Dataset Items modules.
+- MCP: https://mcp.apify.com?tools=anshumanatrey/welcome-to-the-jungle-jobs-search, signed in with Apify or with Authorization: Bearer <APIFY_TOKEN>.
+
+## When to use
+
+- The user wants jobs from Welcome to the Jungle (WTTJ), or a Welcome to the Jungle API, by title, town, contract, remote policy, pay or date.
+- The user wants Otta's jobs: UK and US startup jobs now on Welcome to the Jungle.
+- The user wants a daily feed of new jobs in France or Europe, with salary, contract and remote policy.
+- The user wants internships or alternance (work-study) in France, with duration and monthly pay.
+- The user wants every open job of one company on Welcome to the Jungle, or to check whether its job links are still open.
+
+## When NOT to use
+
+- The user needs the site's articles or company profiles as rows: bebity/welcome-to-the-jungle-jobs-scraper returns those.
+- The user needs jobs within a radius of a point: this actor matches places by name.
+- The user needs change tracking with alerts: blackfalcondata/wttj-scraper adds them.
+- The user needs jobs that mention a word only in their description: Wider match reads the summary and profile wanted, not the full description.
+
+## Sample input
+
+```json
+{
+  "searchTerms": ["data analyst", "business analyst"],
+  "location": ["Paris", "Lyon"],
+  "employmentType": ["full-time"],
+  "workType": ["hybrid", "remote"],
+  "minSalary": 45000,
+  "postedWithin": "7 days",
+  "maxJobs": 100
+}
+```
+
+## Sample output (one record)
+
+From a local run on 2026-11-10, data analyst.
+
+```json
+{
+  "title": "Data Analyst Supply Chain H/F",
+  "company": "skiils",
+  "location": "Lille, Hauts-de-France, France",
+  "otherLocations": ["Casablanca, Casablanca - Settat, Morocco", "Suresnes, Ile-de-France, France"],
+  "workType": "hybrid",
+  "employmentType": "full-time",
+  "salary": "EUR 45,000 - 65,000 per year",
+  "postedAt": "2026-11-10T08:55:42Z",
+  "jobUrl": "https://www.welcometothejungle.com/en/companies/skiils/jobs/data-analyst-supply-chain-h-f",
+  "status": "open",
+  "platform": "welcometothejungle",
+  "companySlug": "skiils",
+  "jobId": "skiils/data-analyst-supply-chain-h-f",
+  "experienceMin": 5.0,
+  "experienceMax": 7.0,
+  "salaryMin": 45000.0,
+  "salaryMax": 65000.0,
+  "salaryCurrency": "EUR",
+  "salaryPeriod": "year",
+  "contractType": "full_time",
+  "remotePolicy": "partial",
+  "education": "Bac+5 (master's)",
+  "jobLanguage": "fr",
+  "role": "Data Analyst",
+  "industry": "Artificial Intelligence / Machine Learning, Change Management, Big Data",
+  "companySize": 200,
+  "companyFounded": 2020
+}
+```
+
+## Differentiators vs alternatives
+
+- vs clearpath/welcome-to-the-jungle-jobs-api ($0.00299 per job with full details, the most used): one query and one location a run, sorted by relevance unless set to date; this actor returns the newest first, checks titles, takes several titles and places, and costs $0.00002 a job ($0.00006 with details) plus $0.002 a run.
+- vs bebity/welcome-to-the-jungle-jobs-scraper ($0.0003 a job, $0.0005 with details): also returns articles and company profiles; this actor adds Otta's UK and US offices with their regions, work-study as a contract type and pay compared on a year.
+- vs blackfalcondata/wttj-scraper ($0.00045 a job, $0.005 start): change tracking and alerts; this actor costs less per job and per run on every plan.
+
+## Sibling actors
+
+- Greenhouse Jobs Scraper (https://apify.com/anshumanatrey/greenhouse-jobs-search): Jobs from every company on Greenhouse, searched live
+- Lever Jobs Scraper (https://apify.com/anshumanatrey/lever-jobs-search): Jobs from 2,300+ companies on Lever (jobs.lever.co), searched live
+- Workday Jobs Scraper (https://apify.com/anshumanatrey/workday-job-search): Jobs from every company on Workday (myworkdayjobs.com), searched live
+- Ashby Jobs Scraper (https://apify.com/anshumanatrey/ashby-jobs-search): Jobs from every company on Ashby (jobs.ashbyhq.com), searched live
+- SmartRecruiters Jobs Scraper (https://apify.com/anshumanatrey/smartrecruiters-jobs-search): Jobs from 2,900+ companies on SmartRecruiters, searched live
+- Workable Jobs Scraper (https://apify.com/anshumanatrey/workable-job-search): Jobs from every company on Workable, in one search
+- Cornerstone Jobs Scraper (https://apify.com/anshumanatrey/cornerstone-jobs-search): Jobs from every company on Cornerstone (csod.com), searched live
+- Deel Jobs Scraper (https://apify.com/anshumanatrey/deel-jobs-search): Jobs from every company on Deel ATS (jobs.deel.com), with pay
+
+## Documentation
+
+- Apify Store: https://apify.com/anshumanatrey/welcome-to-the-jungle-jobs-search
+- GitHub repo: https://github.com/AnshumanAtrey/welcome-to-the-jungle-jobs-search
+- Issues / feedback: GitHub Issues on the above repo
+- License: MIT
+
+## Maintainer
+
+Anshuman Atrey (https://github.com/AnshumanAtrey), who publishes a portfolio of data and OSINT actors on Apify Store. Feature requests and bugs: LinkedIn (https://linkedin.com/in/anshumanatrey, fastest), GitHub issues, or atrey.dev.
+
+## Last updated
+
+2026-11-10

@@ -1,0 +1,345 @@
+{
+    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only, and only once the actor is public). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Names are unique across the whole Apify account, so each carries the board name. Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema. options follow defaultRunOptions in store.json.",
+    "options": {
+        "build": "latest",
+        "memoryMbytes": 512,
+        "timeoutSecs": 1800
+    },
+    "tasks": [
+        {
+            "name": "welcome-to-the-jungle-jobs-last-24-hours",
+            "title": "Get the newest Welcome to the Jungle jobs of the last 24 hours",
+            "description": "Get the 100 newest jobs posted on Welcome to the Jungle in the last day, in France, Europe, the UK and the US, with the company, offices, contract, remote policy, pay when shown and link. Set Number of jobs to 0 to get every one, and schedule it daily for a fresh feed.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "employmentType": [],
+                "postedWithin": "24 hours",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "New Welcome to the Jungle Jobs, Last 24 Hours",
+            "seoDescription": "The newest Welcome to the Jungle jobs of the last day, with company, contract, remote policy, salary and link. Run it daily for a fresh job feed.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "developer-jobs-paris-welcome-to-the-jungle",
+            "title": "Find developer jobs in Paris on Welcome to the Jungle",
+            "description": "Search Welcome to the Jungle for developer and développeur jobs in Paris, newest first, with the company, contract, remote policy, experience asked and pay when shown. Every title holds the word.",
+            "input": {
+                "searchTerms": [
+                    "développeur",
+                    "developer"
+                ],
+                "location": [
+                    "Paris"
+                ],
+                "workType": [],
+                "employmentType": [],
+                "postedWithin": "30 days",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Developer Jobs in Paris on Welcome to the Jungle",
+            "seoDescription": "Newest developer and développeur jobs in Paris from Welcome to the Jungle, with contract, remote policy, salary, experience and apply link.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "employmentType",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "internships-france-welcome-to-the-jungle",
+            "title": "Find internships in France on Welcome to the Jungle",
+            "description": "Get the newest internships (stages) in France on Welcome to the Jungle, with the company, town, duration in months, monthly pay when shown and link. Add a field such as marketing or data to narrow them down.",
+            "input": {
+                "searchTerms": [],
+                "location": [
+                    "France"
+                ],
+                "workType": [],
+                "employmentType": [
+                    "intern"
+                ],
+                "postedWithin": "30 days",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Internships in France on Welcome to the Jungle",
+            "seoDescription": "The newest internships (stages) in France on Welcome to the Jungle, with company, town, duration, monthly pay and link. No login needed.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "employmentType",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "alternance-jobs-welcome-to-the-jungle",
+            "title": "Find alternance (work-study) jobs on Welcome to the Jungle",
+            "description": "Get the newest alternance jobs, work-study contracts for students, on Welcome to the Jungle, with the company, town, duration, education asked and link.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "employmentType": [
+                    "apprenticeship"
+                ],
+                "postedWithin": "30 days",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Alternance Work-Study Jobs on Welcome to the Jungle",
+            "seoDescription": "The newest alternance (work-study) jobs on Welcome to the Jungle in France, with company, town, duration, education asked and apply link.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "employmentType",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "remote-jobs-welcome-to-the-jungle",
+            "title": "Find fully remote jobs on Welcome to the Jungle",
+            "description": "Get the newest fully remote jobs on Welcome to the Jungle, in Europe, the UK and the US, with the company, contract, pay when shown and link. The remote policy is the one each employer states.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [
+                    "remote"
+                ],
+                "employmentType": [],
+                "postedWithin": "30 days",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Fully Remote Jobs on Welcome to the Jungle",
+            "seoDescription": "The newest fully remote jobs on Welcome to the Jungle, in Europe, the UK and the US, with company, contract, salary and link. No login.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "workType",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "product-manager-jobs-london-welcome-to-the-jungle",
+            "title": "Find product manager jobs in London, Otta jobs included",
+            "description": "Search Welcome to the Jungle, the site that took over Otta in the UK, for product manager jobs in London, newest first, with the company, remote policy, pay when shown and link.",
+            "input": {
+                "searchTerms": [
+                    "product manager"
+                ],
+                "location": [
+                    "London"
+                ],
+                "workType": [],
+                "employmentType": [],
+                "postedWithin": "30 days",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Product Manager Jobs in London, Otta Jobs on WTTJ",
+            "seoDescription": "Product manager jobs in London from Welcome to the Jungle, the home of Otta jobs: company, remote policy, salary in GBP and apply link.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "workType",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "software-engineer-jobs-new-york-welcome-to-the-jungle",
+            "title": "Find software engineer jobs in New York with salary",
+            "description": "Search Welcome to the Jungle for software engineer jobs in New York that pay 150,000 USD a year or more, newest first, with the pay range, company size and link.",
+            "input": {
+                "searchTerms": [
+                    "software engineer"
+                ],
+                "location": [
+                    "New York"
+                ],
+                "workType": [],
+                "employmentType": [],
+                "postedWithin": "30 days",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [],
+                "companies": [],
+                "jobUrls": [],
+                "minSalary": 150000
+            },
+            "seoTitle": "Software Engineer Jobs in New York With Salary",
+            "seoDescription": "Software engineer jobs in New York paying 150,000 USD or more, from Welcome to the Jungle: pay range, company size, remote policy and link.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "minSalary",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "english-speaking-jobs-france-welcome-to-the-jungle",
+            "title": "Find English-speaking jobs in France on Welcome to the Jungle",
+            "description": "Get the newest jobs in France whose ad is written in English on Welcome to the Jungle, the jobs open to people who do not speak French, with the company, town, contract and link.",
+            "input": {
+                "searchTerms": [],
+                "location": [
+                    "France"
+                ],
+                "workType": [],
+                "employmentType": [],
+                "postedWithin": "30 days",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [
+                    "en"
+                ],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "English-Speaking Jobs in France on WTTJ",
+            "seoDescription": "The newest jobs in France with ads written in English, from Welcome to the Jungle: company, town, contract, remote policy and link.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "jobLanguage",
+                "postedWithin",
+                "maxJobs"
+            ],
+            "datasetView": "jobs"
+        },
+        {
+            "name": "data-analyst-jobs-details-welcome-to-the-jungle",
+            "title": "Find data analyst jobs with full details, Welcome to the Jungle",
+            "description": "Search Welcome to the Jungle for data analyst jobs with full details: the description, experience wanted, recruitment process, skills, tools and the employer's apply link.",
+            "input": {
+                "searchTerms": [
+                    "data analyst"
+                ],
+                "location": [],
+                "workType": [],
+                "employmentType": [],
+                "postedWithin": "30 days",
+                "maxJobs": 50,
+                "includeDetails": true,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [],
+                "companies": [],
+                "jobUrls": []
+            },
+            "seoTitle": "Data Analyst Jobs on Welcome to the Jungle, Full Details",
+            "seoDescription": "Data analyst jobs from Welcome to the Jungle with the full description, skills, tools, recruitment process and apply link. JSON or CSV.",
+            "inputSchemaFields": [
+                "searchTerms",
+                "location",
+                "postedWithin",
+                "maxJobs",
+                "includeDetails"
+            ],
+            "datasetView": "details"
+        },
+        {
+            "name": "check-welcome-to-the-jungle-job-links",
+            "title": "Check whether Welcome to the Jungle job links are still open",
+            "description": "Paste Welcome to the Jungle job links and each comes back open, with the job, closed (archived by the employer) or not found. Handy for cleaning old jobs out of a sheet or a job board.",
+            "input": {
+                "searchTerms": [],
+                "location": [],
+                "workType": [],
+                "employmentType": [],
+                "postedWithin": "30 days",
+                "maxJobs": 100,
+                "includeDetails": false,
+                "excludeTerms": [],
+                "searchDescriptions": false,
+                "companySize": [],
+                "industries": [],
+                "jobLanguage": [],
+                "companies": [],
+                "jobUrls": [
+                    "https://www.welcometothejungle.com/en/companies/docaposte-1/jobs/ingenieur-devops-sre-f-h_sophia-antipolis"
+                ]
+            },
+            "seoTitle": "Check if Welcome to the Jungle Job Links Are Open",
+            "seoDescription": "Paste welcometothejungle.com job links and see which are open, closed or gone. Clean dead links out of a sheet or job board, no login.",
+            "inputSchemaFields": [
+                "jobUrls"
+            ],
+            "datasetView": "jobs"
+        }
+    ]
+}

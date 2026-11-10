@@ -1,0 +1,680 @@
+{
+    "actorSpecification": 1,
+    "name": "welcome-to-the-jungle-jobs-search",
+    "title": "Welcome to the Jungle Jobs Scraper & API - Otta, WTTJ, Salary",
+    "description": "Welcome to the Jungle jobs scraper and API (WTTJ and Otta): 84,000+ open jobs in France, Europe, the UK and the US, searched live by title, place, contract, remote and pay, newest first. Salary, experience, company size and industry on every row, internships and alternance too. No login.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "categories": [
+        "JOBS",
+        "LEAD_GENERATION",
+        "OPEN_SOURCE"
+    ],
+    "input": "./INPUT_SCHEMA.json",
+    "output": "./output_schema.json",
+    "dockerfile": "../Dockerfile",
+    "readme": "../README.md",
+    "minMemoryMbytes": 256,
+    "maxMemoryMbytes": 4096,
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "Welcome to the Jungle jobs",
+            "description": "One row per job, newest first: title, company, offices, remote policy, contract, pay, experience band, company size and industry, posting date and link; with details on, also the description, skills, tools, start date and apply link. The run summary is the OUTPUT record, not a row.",
+            "fields": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job title (title)",
+                        "description": "The job title as the employer wrote it on Welcome to the Jungle, often in French with H/F or F/H.",
+                        "example": "Data Analyst Supply Chain H/F"
+                    },
+                    "company": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company name (company)",
+                        "description": "The hiring company as Welcome to the Jungle names it.",
+                        "example": "skiils"
+                    },
+                    "location": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Main location (location)",
+                        "description": "The job's first office: town, region and country. An office the site gives no region gets its town's region (London: England).",
+                        "example": "Lille, Hauts-de-France, France"
+                    },
+                    "otherLocations": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Other locations (otherLocations)",
+                        "description": "Every other office the job lists, in the same form.",
+                        "example": [
+                            "Casablanca, Casablanca - Settat, Morocco",
+                            "Suresnes, Ile-de-France, France"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "workType": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Remote or office (workType)",
+                        "description": "remote (fully remote), hybrid (a few days or occasional days at home) or onsite (no remote), from the remote policy the employer states; empty when none is stated (47% of jobs).",
+                        "example": "hybrid"
+                    },
+                    "employmentType": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Contract type (employmentType)",
+                        "description": "full-time (permanent, CDI), part-time, contract (freelance), intern, temporary (fixed-term, CDD) or apprenticeship (work-study); empty for VIE, graduate programs, volunteering and other (see contractType).",
+                        "example": "full-time"
+                    },
+                    "department": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job category (department)",
+                        "description": "The site's job category of the role, such as Software & Web Development or Data / Business Intelligence.",
+                        "example": "Data / Business Intelligence"
+                    },
+                    "salary": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay summary (salary)",
+                        "description": "The pay the employer shows, with its currency and period, as in EUR 50,000 - 60,000 per year. Empty when no pay is shown (66% of jobs).",
+                        "example": "EUR 45,000 - 65,000 per year"
+                    },
+                    "postedAt": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Posted on (postedAt)",
+                        "description": "When the job went live on Welcome to the Jungle, in UTC: the job page's own JobPosting date.",
+                        "example": "2026-11-10T08:55:42Z"
+                    },
+                    "jobUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job link (jobUrl)",
+                        "description": "The job's page on welcometothejungle.com.",
+                        "example": "https://www.welcometothejungle.com/en/companies/skiils/jobs/data-analyst-supply-chain-h-f"
+                    },
+                    "applyUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Apply link (applyUrl)",
+                        "description": "Where to apply: the job's page, or with details on the employer's own careers page when the job came from there. Empty for a checked link that is closed or not found.",
+                        "example": "https://careers.sourcewhale.com/jobs/7991868-product-manager?utm_source=welcometothejungle"
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Still open? (status)",
+                        "description": "open for every search result (read live during the run). For a checked link: open, closed (the employer archived it) or not found.",
+                        "example": "open"
+                    },
+                    "platform": {
+                        "type": "string",
+                        "title": "Job site (platform)",
+                        "description": "The site the job came from: always welcometothejungle here.",
+                        "example": "welcometothejungle"
+                    },
+                    "companySlug": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company page name (companySlug)",
+                        "description": "The company's name in its Welcome to the Jungle address (welcometothejungle.com/en/companies/<companySlug>), for Only these companies.",
+                        "example": "skiils"
+                    },
+                    "companyWebsite": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company website (companyWebsite)",
+                        "description": "The company's own website, with details on.",
+                        "example": "https://sourcewhale.com/"
+                    },
+                    "jobId": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job ID (jobId)",
+                        "description": "The company and job names of the job's address, company/job: unique on the site.",
+                        "example": "skiils/data-analyst-supply-chain-h-f"
+                    },
+                    "checkedAt": {
+                        "type": "string",
+                        "title": "Checked at (checkedAt)",
+                        "description": "When the run read Welcome to the Jungle, in UTC.",
+                        "example": "2026-11-10T10:35:06+00:00"
+                    },
+                    "experienceMin": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Experience from (experienceMin)",
+                        "description": "The fewest years of experience the job asks for: the lower end of its band (0, 0.5, 1, 2, 3, 4, 5, 7, 10 or 15).",
+                        "example": 5.0
+                    },
+                    "experienceMax": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Experience up to (experienceMax)",
+                        "description": "The most years of the band (0.5, 1, 2, 3, 4, 5, 7, 10 or 15); empty for 15 years or more and when the job states none.",
+                        "example": 7.0
+                    },
+                    "salaryMin": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Lowest pay (salaryMin)",
+                        "description": "The lowest pay shown, in salaryCurrency per salaryPeriod. Empty when no pay is shown.",
+                        "example": 45000.0
+                    },
+                    "salaryMax": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Highest pay (salaryMax)",
+                        "description": "The highest pay shown, in salaryCurrency per salaryPeriod.",
+                        "example": 65000.0
+                    },
+                    "salaryCurrency": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay currency (salaryCurrency)",
+                        "description": "EUR, USD or GBP.",
+                        "example": "EUR"
+                    },
+                    "salaryPeriod": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay period (salaryPeriod)",
+                        "description": "year, month or day: the period the pay is shown for.",
+                        "example": "year"
+                    },
+                    "contractType": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Site's contract (contractType)",
+                        "description": "The contract as Welcome to the Jungle states it: full_time, part_time, temporary, internship, apprenticeship, freelance, vie, graduate_program, volunteer or other.",
+                        "example": "full_time"
+                    },
+                    "contractDurationMin": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Shortest term (contractDurationMin)",
+                        "description": "For an internship, work-study or fixed-term job: the shortest duration, in months.",
+                        "example": 6
+                    },
+                    "contractDurationMax": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Longest term (contractDurationMax)",
+                        "description": "The longest duration, in months.",
+                        "example": 6
+                    },
+                    "remotePolicy": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Site's remote policy (remotePolicy)",
+                        "description": "full, partial (a few days at home), occasional or none, as the employer states it; empty when not stated.",
+                        "example": "partial"
+                    },
+                    "education": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Education asked (education)",
+                        "description": "The education level the job asks for, in France's terms: Bac+5 (master's), Bac+3 (bachelor's), Bac+2 and so on; on 20% of jobs.",
+                        "example": "Bac+5 (master's)"
+                    },
+                    "jobLanguage": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Language of the ad (jobLanguage)",
+                        "description": "The two-letter code of the language the ad is written in: fr, en, de, es...",
+                        "example": "fr"
+                    },
+                    "role": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Standard job role (role)",
+                        "description": "The site's standard role for the job, such as Data Engineer or Product Owner.",
+                        "example": "Data Analyst"
+                    },
+                    "roleCategory": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Role group (roleCategory)",
+                        "description": "The site's group of the role, such as Tech & Engineering or Sales & Customer Service.",
+                        "example": "Tech & Engineering"
+                    },
+                    "industry": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Business sector (industry)",
+                        "description": "The company's industries on Welcome to the Jungle, comma separated.",
+                        "example": "Artificial Intelligence / Machine Learning, Change Management, Big Data"
+                    },
+                    "companySize": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Headcount (companySize)",
+                        "description": "How many people the company employs, as it states on the site (99% of jobs).",
+                        "example": 200
+                    },
+                    "companyFounded": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Year founded (companyFounded)",
+                        "description": "The year the company was founded.",
+                        "example": 2020
+                    },
+                    "companyLogo": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company logo (companyLogo)",
+                        "description": "The company's logo image on Welcome to the Jungle.",
+                        "example": "https://cdn-images.welcometothejungle.com/5_es0apSaeqfD5vtQ7A-pDWdJvMk_U-lCfDVsZlHDxs/rs:auto:400/q:85/czM6Ly93dHRqLXByb2R1Y3Rpb24vdXBsb2Fkcy9vcmdhbml6YXRpb24vbG9nby80NzU1LzE2ODAxNi9iMDlmMGFhYy1iYTQ3LTRhMzYtYjIwNy0xY2M4MzJjYjczZmQucG5n"
+                    },
+                    "summary": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Short summary (summary)",
+                        "description": "Welcome to the Jungle's few-sentence summary of the job, on every job.",
+                        "example": "Rejoins notre équipe en tant que Data Analyst Supply Chain. Tu seras responsable de cadrer les besoins fonctionnels, d'extraire et d'exploiter les données, de construire des outils de pilotage, de..."
+                    },
+                    "keyMissions": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Key missions (keyMissions)",
+                        "description": "The job's three key missions as the site lists them, often in French.",
+                        "example": [
+                            "Cadrer les besoins fonctionnels en échangeant avec les équipes métier, IT et direction pour définir des analyses pertinentes."
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "benefits": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Perks (benefits)",
+                        "description": "The perks the company lists, such as days at home, meal vouchers or a health plan (45% of jobs).",
+                        "example": [
+                            "Between 3-4 days at home",
+                            "Between 2-3 days at home",
+                            "Between 1-2 days at home"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "skills": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Skills asked for (skills)",
+                        "description": "With details on: the skills the job asks for.",
+                        "example": [
+                            "Prioritization",
+                            "Continuous improvement",
+                            "Interviewing"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "tools": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Tools used (tools)",
+                        "description": "With details on: the tools and technologies the job uses.",
+                        "example": [
+                            "Grafana",
+                            "GitLab"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "startDate": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Start date (startDate)",
+                        "description": "With details on: when the job starts, when the employer says (rarely).",
+                        "example": null
+                    },
+                    "description": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job description (description)",
+                        "description": "With details on: the description, the experience wanted and the recruitment process, as plain text.",
+                        "example": "About Us\nSourceWhale is the leading AI native Recruitment Productivity Platform, helping recruiters increase conversations and do more with less. We integrate with the tools..."
+                    },
+                    "descriptionHtml": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Description as HTML (descriptionHtml)",
+                        "description": "With details on: the same sections as HTML, as the job page shows them.",
+                        "example": "<h2>  About Us</h2><p>  SourceWhale is the leading AI native Recruitment Productivity Platform, helping recruiters increase conversations and do more with less. We integrate with..."
+                    },
+                    "reference": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Reference code (reference)",
+                        "description": "With details on: the job's reference on Welcome to the Jungle's recruiting software.",
+                        "example": "SKIIL_dr9y6Oa"
+                    },
+                    "city": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Town or city (city)",
+                        "description": "With details on: the town of the job's first office.",
+                        "example": "London"
+                    },
+                    "region": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Region or state (region)",
+                        "description": "With details on: the region of the job's first office.",
+                        "example": "England"
+                    },
+                    "country": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Country name (country)",
+                        "description": "With details on: the country of the job's first office.",
+                        "example": "United Kingdom"
+                    },
+                    "countryCode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Country code (countryCode)",
+                        "description": "With details on: the two-letter code of that country.",
+                        "example": "GB"
+                    }
+                }
+            },
+            "views": {
+                "jobs": {
+                    "title": "Jobs",
+                    "description": "One row per job: what it is, where, the contract, remote policy, pay and experience, the company size and when it went live, with its link.",
+                    "transformation": {
+                        "fields": [
+                            "title",
+                            "company",
+                            "location",
+                            "workType",
+                            "employmentType",
+                            "salary",
+                            "experienceMin",
+                            "experienceMax",
+                            "companySize",
+                            "postedAt",
+                            "jobUrl"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "title": {
+                                "label": "Job title (title)",
+                                "format": "text"
+                            },
+                            "company": {
+                                "label": "Company name (company)",
+                                "format": "text"
+                            },
+                            "location": {
+                                "label": "Main location (location)",
+                                "format": "text"
+                            },
+                            "workType": {
+                                "label": "Remote or office (workType)",
+                                "format": "text"
+                            },
+                            "employmentType": {
+                                "label": "Contract type (employmentType)",
+                                "format": "text"
+                            },
+                            "salary": {
+                                "label": "Pay summary (salary)",
+                                "format": "text"
+                            },
+                            "experienceMin": {
+                                "label": "Experience from (experienceMin)",
+                                "format": "number"
+                            },
+                            "experienceMax": {
+                                "label": "Experience up to (experienceMax)",
+                                "format": "number"
+                            },
+                            "companySize": {
+                                "label": "Headcount (companySize)",
+                                "format": "number"
+                            },
+                            "postedAt": {
+                                "label": "Posted on (postedAt)",
+                                "format": "date"
+                            },
+                            "jobUrl": {
+                                "label": "Job link (jobUrl)",
+                                "format": "link"
+                            }
+                        }
+                    }
+                },
+                "details": {
+                    "title": "Details",
+                    "description": "The description, skills, tools, summary, missions, perks and every other field of each job.",
+                    "transformation": {
+                        "fields": [
+                            "title",
+                            "company",
+                            "description",
+                            "skills",
+                            "tools",
+                            "summary",
+                            "keyMissions",
+                            "benefits",
+                            "contractType",
+                            "remotePolicy",
+                            "education",
+                            "industry",
+                            "role",
+                            "jobLanguage",
+                            "otherLocations",
+                            "applyUrl",
+                            "companyWebsite",
+                            "jobId",
+                            "status",
+                            "checkedAt"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "title": {
+                                "label": "Job title (title)",
+                                "format": "text"
+                            },
+                            "company": {
+                                "label": "Company name (company)",
+                                "format": "text"
+                            },
+                            "description": {
+                                "label": "Job description (description)",
+                                "format": "text"
+                            },
+                            "skills": {
+                                "label": "Skills asked for (skills)",
+                                "format": "array"
+                            },
+                            "tools": {
+                                "label": "Tools used (tools)",
+                                "format": "array"
+                            },
+                            "summary": {
+                                "label": "Short summary (summary)",
+                                "format": "text"
+                            },
+                            "keyMissions": {
+                                "label": "Key missions (keyMissions)",
+                                "format": "array"
+                            },
+                            "benefits": {
+                                "label": "Perks (benefits)",
+                                "format": "array"
+                            },
+                            "contractType": {
+                                "label": "Site's contract (contractType)",
+                                "format": "text"
+                            },
+                            "remotePolicy": {
+                                "label": "Site's remote policy (remotePolicy)",
+                                "format": "text"
+                            },
+                            "education": {
+                                "label": "Education asked (education)",
+                                "format": "text"
+                            },
+                            "industry": {
+                                "label": "Business sector (industry)",
+                                "format": "text"
+                            },
+                            "role": {
+                                "label": "Standard job role (role)",
+                                "format": "text"
+                            },
+                            "jobLanguage": {
+                                "label": "Language of the ad (jobLanguage)",
+                                "format": "text"
+                            },
+                            "otherLocations": {
+                                "label": "Other locations (otherLocations)",
+                                "format": "array"
+                            },
+                            "applyUrl": {
+                                "label": "Apply link (applyUrl)",
+                                "format": "link"
+                            },
+                            "companyWebsite": {
+                                "label": "Company website (companyWebsite)",
+                                "format": "text"
+                            },
+                            "jobId": {
+                                "label": "Job ID (jobId)",
+                                "format": "text"
+                            },
+                            "status": {
+                                "label": "Still open? (status)",
+                                "format": "text"
+                            },
+                            "checkedAt": {
+                                "label": "Checked at (checkedAt)",
+                                "format": "date"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "keyValueStore": {
+            "actorKeyValueStoreSchemaVersion": 1,
+            "title": "Run summary",
+            "description": "The OUTPUT record: how many jobs Welcome to the Jungle listed, read, matched and saved, the checked links, the notes about how the input was read and the settings used, the pay, size, industry and language filters included.",
+            "collections": {
+                "summary": {
+                    "title": "Run summary (OUTPUT)",
+                    "description": "Status, message, counts of jobs read, matched and saved, checked links, notes and settings.",
+                    "key": "OUTPUT"
+                }
+            }
+        }
+    }
+}
