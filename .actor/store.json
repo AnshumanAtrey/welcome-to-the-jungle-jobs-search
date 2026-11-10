@@ -9,7 +9,7 @@
         ]
     },
     "actorPermissionLevel": "LIMITED_PERMISSIONS",
-    "isPublic": false,
+    "isPublic": true,
     "defaultRunOptions": {
         "build": "latest",
         "memoryMbytes": 1024,
@@ -17,7 +17,7 @@
     },
     "defaultRunOptions$comment": "Default 1 GB, measured on Apify on 2026-11-10 (build 1.0.2): the example input took 3.7 s and $0.00076 at 512 MB, 4.0 s and $0.00088 at 1 GB, 4.0 s and $0.00110 at 2 GB (the work waits on two calls); a run that reads the whole board (maxJobs 0, any time) peaked at 435 MB of 512 MB and read 82,882 jobs in 114 s (run 4LaQ44qcmeyQEkHBH), against 465 MB of 1 GB in 65 s (asXt3iK4LddEgtzPX), so 512 MB leaves an every-job run 15% from running out of memory as the board grows, and 1 GB reads it 43% faster for 14% more compute. A place the site does not list (a full scan) took 138 s at 512 MB and 75 s at 1 GB. The start fee is one event up to 1 GB either way. Timeout 1800 s.",
     "pricing": {
-        "$comment": "Cost plus markup (owner, 2026-11-10): FREE 100%, BRONZE 95%, SILVER 90%, GOLD 85%, PLATINUM and DIAMOND 80% over the measured Apify cost of each event at that tier's unit prices (docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md; PLATINUM and DIAMOND at GOLD's), rounded up to two significant figures, never under $0.00001, never rising with the tier. Measured on 21 Apify runs (build 1.0.2, 512 MB to 2 GB): a job costs one dataset write ($0.000005 FREE) plus 0.00000023 CU, a job with details 0.0000026 CU more; markup job 106/106/94/98.5/98.5/98.5%, details 101.5/101.5/94.1/101.7/101.7/101.7%. Apify stores PLATINUM and DIAMOND at GOLD's price whatever is sent (first set, 2026-11-10: $0.00001 sent for job-details, $0.000011 stored), so they carry GOLD's price here too, or every deploy would read the repo as a decrease. The run start covers a small run's fixed cost at 100% from $0.0013, and is raised to $0.01 so every measured run clears 80% on every tier: the lowest is the full scan of a place the site does not list (0 rows, $0.0044 at 1 GB, run tK5yKbwUmuRLzZmKf), 81.5% on FREE. Written by pricing/price_ladder.py in the agent's scratch folder.",
+        "$comment": "Cost plus markup (owner, 2026-11-10): FREE 100%, BRONZE 95%, SILVER 90%, GOLD 85%, PLATINUM and DIAMOND 80% over the measured Apify cost of each event at that tier's unit prices (docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md; PLATINUM and DIAMOND at GOLD's), rounded up to two significant figures, never under $0.00001, never rising with the tier. Measured on 21 Apify runs (build 1.0.2, 512 MB to 2 GB): a job costs one dataset write ($0.000005 FREE) plus 0.00000023 CU, a job with details 0.0000026 CU more; markup job 106/106/94/98.5/98.5/98.5%, details 101.5/101.5/94.1/101.7/101.7/101.7%. Apify stores PLATINUM and DIAMOND at GOLD's price whatever is sent (first set, 2026-11-10: $0.00001 sent for job-details, $0.000011 stored), so they carry GOLD's price here too, or every deploy would read the repo as a decrease. The run start covers a small run's fixed cost at 100% from $0.0013, and is raised to $0.01 so every measured run clears 80% on every tier: the lowest is the full scan of a place the site does not list (0 rows, $0.0044 at 1 GB, run tK5yKbwUmuRLzZmKf), 81.5% on FREE.",
         "apply": true,
         "pricingInfos": [
             {
