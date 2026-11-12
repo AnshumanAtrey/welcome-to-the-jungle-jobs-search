@@ -4,6 +4,13 @@ Welcome to the Jungle jobs scraper and API: search every open job on welcometoth
 
 Use it as a Welcome to the Jungle API with no login and no API key, a WTTJ job scraper, an Otta jobs alternative or a daily feed of new jobs in France and Europe from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, and export JSON, CSV or Excel. Every row's title holds the words you typed, a place typed with the title is read as the place (développeur à Paris, data analyst in London), French and English place names both work (Bretagne and Brittany), and a pasted Welcome to the Jungle search link keeps its filters. Available as an [Apify Actor](https://apify.com/anshumanatrey/welcome-to-the-jungle-jobs-search). $0.000013 per job, $0.000014 with full details, $0.01 per run start at the default memory.
 
+**Use it from an AI assistant:**
+
+- **Claude** (claude.ai and the desktop app): [Add Welcome to the Jungle Jobs to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Welcome%20to%20the%20Jungle%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fwelcome-to-the-jungle-jobs-search), click Continue, sign in to Apify, Allow, and ask in plain words.
+- **Claude Code:** `claude mcp add --transport http welcome-to-the-jungle-jobs-search "https://mcp.apify.com?tools=anshumanatrey/welcome-to-the-jungle-jobs-search"`, then run `/mcp` to sign in to Apify.
+- **Codex:** `codex mcp add welcome-to-the-jungle-jobs-search --url "https://mcp.apify.com?tools=anshumanatrey/welcome-to-the-jungle-jobs-search"`, then `codex mcp login welcome-to-the-jungle-jobs-search`.
+- **Any other MCP client:** `https://mcp.apify.com?tools=anshumanatrey/welcome-to-the-jungle-jobs-search`, signed in with Apify or an `Authorization: Bearer <APIFY_TOKEN>` header.
+
 ## What does it do?
 
 - **Searches all of Welcome to the Jungle, live.** 84,849 open jobs at 4,515 companies on 2026-11-10, read from the site's own search index at the moment of your run, newest first: offices in France (54,471), the US (18,024), the UK (5,573), Canada, Germany, Spain, Ireland, the Netherlands, Italy, Belgium and 239 more countries.
